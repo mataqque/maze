@@ -8,7 +8,7 @@
     "build": "strapi build",
     "strapi": "strapi",
     "start":"strapi start",
-    "pm2": "pm2 start yarn --maze -- start"
+    "pm2": "pm2 start yarn --maze app -- start"
   },
   "devDependencies": {},
   "dependencies": {
