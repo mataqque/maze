@@ -1,0 +1,6 @@
+dist
+package-lock.json
+.eslintrc.cjs
+.next
+node_modules
+# src

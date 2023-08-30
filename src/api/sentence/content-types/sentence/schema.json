@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sentences",
+  "info": {
+    "singularName": "sentence",
+    "pluralName": "sentences",
+    "displayName": "sentence",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "english": {
+      "type": "string"
+    },
+    "spanish": {
+      "type": "string"
+    },
+    "userphone": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "sentences"
+    }
+  }
+}
