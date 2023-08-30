@@ -5,9 +5,9 @@
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
-    "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "start": "pm2 start yarn --maze -- start"
   },
   "devDependencies": {},
   "dependencies": {
