@@ -12,6 +12,9 @@ export default {
 				user = await strapi.db.query('plugin::users-permissions.user').create({
 					data: {
 						cel: cel,
+						blocked: false,
+						confirm: true,
+						publishedAt: new Date(),
 					},
 				});
 			}
