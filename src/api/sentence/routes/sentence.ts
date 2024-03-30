@@ -11,6 +11,15 @@ export default {
 		},
 		{
 			method: 'POST',
+			path: '/sentences/sentence',
+			handler: 'sentence.getSentence',
+			config: {
+				policies: [],
+				middlewares: [],
+			},
+		},
+		{
+			method: 'POST',
 			path: '/sentences',
 			handler: 'sentence.createSentence',
 			config: {

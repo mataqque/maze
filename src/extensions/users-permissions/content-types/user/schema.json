@@ -76,6 +76,11 @@
     },
     "interval": {
       "type": "string"
+    },
+    "invalid_list": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::invalid-list.invalid-list"
     }
   }
 }

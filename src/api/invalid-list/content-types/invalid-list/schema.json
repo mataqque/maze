@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invalid_lists",
+  "info": {
+    "singularName": "invalid-list",
+    "pluralName": "invalid-lists",
+    "displayName": "invalidList",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "list": {
+      "type": "json"
+    }
+  }
+}
