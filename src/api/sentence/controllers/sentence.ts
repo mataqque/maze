@@ -1,3 +1,5 @@
+import { ApiInvalidListInvalidList } from '../../../../types/generated/contentTypes';
+
 interface UserData {
 	id: number;
 	username: string;
@@ -59,6 +61,7 @@ export default {
 	},
 	getSentences: async (ctx, next) => {
 		const { cel } = ctx.request.body;
+		console.log(cel);
 		try {
 			const user = await strapi.db.query('plugin::users-permissions.user').findOne({
 				where: {
@@ -86,17 +89,28 @@ export default {
 				},
 				populate: ['invalid_list'],
 			});
+			if (user.invalid_list == null) {
+				const updateList = await strapi.entityService.create('api::invalid-list.invalid-list', {
+					data: {
+						list: [],
+						users_permissions_user: {
+							id: user.id,
+						},
+						updatedAt: new Date(),
+					},
+				});
+			}
 			const data: Sentence[] = await strapi.entityService.findMany('api::sentence.sentence', {
 				filters: {
 					userphone: user.id,
 				},
 			});
 			let newData = data.filter(e => {
-				if (!user.invalid_list.list.includes(e.id)) {
+				if (!user?.invalid_list.list?.includes(e.id)) {
 					return e;
 				}
 			});
-			console.log('newData', newData);
+
 			if (newData.length == 0) {
 				const updateList = await strapi.entityService.update('api::invalid-list.invalid-list', user.invalid_list.id, {
 					data: {
@@ -107,11 +121,9 @@ export default {
 				newData = data;
 			}
 			const numRandom = Math.floor(Math.random() * newData.length);
-
 			const sentence = newData[numRandom];
 			user.invalid_list.list.push(sentence.id);
 			const newBlackList = user.invalid_list.list;
-			console.log('newBlackList', newBlackList);
 			const updateList = await strapi.entityService.update('api::invalid-list.invalid-list', user.invalid_list.id, {
 				data: {
 					list: newBlackList,

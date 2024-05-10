@@ -4,8 +4,7 @@
   "info": {
     "singularName": "invalid-list",
     "pluralName": "invalid-lists",
-    "displayName": "invalidList",
-    "description": ""
+    "displayName": "invalidList"
   },
   "options": {
     "draftAndPublish": true
@@ -14,6 +13,12 @@
   "attributes": {
     "list": {
       "type": "json"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "invalid_list"
     }
   }
 }
